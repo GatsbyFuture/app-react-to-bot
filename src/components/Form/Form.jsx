@@ -53,7 +53,7 @@ const Form = () => {
 
     return (
         <div className={'form'}>
-            <h3>fill your data</h3>
+            <h3>Fill your data</h3>
             <input
                 className={"input"}
                 type="text"
