@@ -101,7 +101,7 @@ const Form = () => {
                 placeholder={'Mutaxasislik'}
                 value={specialty}
                 id='specialty'
-                onChange={onchange}
+                onChange={onChange}
             />
             <input
                 className={"input"}
@@ -109,7 +109,7 @@ const Form = () => {
                 placeholder={'Ish joyi'}
                 value={workPlace}
                 id='workPlace'
-                onChange={onchange}
+                onChange={onChange}
             />
             <input
                 className={"input"}
@@ -129,6 +129,7 @@ const Form = () => {
                     type="text"
                     placeholder={'Meneger FIO'}
                     value={managerName}
+                    id='managerName'
                     onChange={onChange}
                 />
                 : null}
