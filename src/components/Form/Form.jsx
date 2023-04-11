@@ -63,7 +63,7 @@ const Form = () => {
     }, []);
 
     useEffect(() => {
-        if (!fullName || !dataOfBirthday || !specialty || !workPlace || phoneNumber) {
+        if (!fullName && !dataOfBirthday && !specialty && !workPlace && !phoneNumber) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
