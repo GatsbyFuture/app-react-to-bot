@@ -11,7 +11,7 @@ const Form = () => {
         dataOfBirthday: '',
         specialty: '',
         workPlace: '',
-        phoneNumber: '',
+        phoneNumber: null,
         managerName: '',
 
     })
@@ -63,7 +63,7 @@ const Form = () => {
     }, []);
 
     useEffect(() => {
-        if (!fullName && !dataOfBirthday && !specialty && !workPlace && !phoneNumber) {
+        if (!fullName && !dataOfBirthday && !specialty && !workPlace) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
