@@ -4,19 +4,50 @@ import "./Form.css";
 
 const Form = () => {
 
-    const [country, setCountry] = useState('');
-    const [street, setStreet] = useState('');
-    const [subject, setSubject] = useState('physical');
+    const [subject, setSubject] = useState('false');
     const { tg } = useTelegram();
+    const [data, setData] = useState({
+        fullName: '',
+        dataOfBirthday: '',
+        specialty: '',
+        workPlace: '',
+        phoneNumber: '',
+        managerName: '',
 
+    })
+    const {
+        fullName,
+        dataOfBirthday,
+        specialty,
+        workPlace,
+        phoneNumber,
+        managerName
+    } = data
+
+    const onChange = (e) => {
+        setData(prev => ({
+            ...prev,
+            [e.target.id]: e.target.value
+        }))
+    }
     const onSendData = useCallback(() => {
         const data = {
-            country,
-            street,
-            subject
+            fullName,
+            dataOfBirthday,
+            specialty,
+            workPlace,
+            phoneNumber,
+            managerName
         }
         tg.sendData(JSON.stringify(data));
-    }, [country, street, subject]);
+    }, [
+        fullName,
+        dataOfBirthday,
+        specialty,
+        workPlace,
+        phoneNumber,
+        managerName
+    ]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -27,51 +58,80 @@ const Form = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: "Send data"
+            text: "Malumotlarni saqlash"
         });
     }, []);
 
     useEffect(() => {
-        if (!street || !country) {
+        if (!fullName || !dataOfBirthday || !specialty || !workPlace || phoneNumber) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street]);
-
-    const onChangeCountry = (e) => {
-        setCountry(e.target.value);
-    }
-
-    const onChangeStreet = (e) => {
-        setStreet(e.target.value);
-    }
-
-    const onChangeSubject = (e) => {
-        setSubject(e.target.value);
-    }
+    }, [
+        fullName,
+        dataOfBirthday,
+        specialty,
+        workPlace,
+        phoneNumber
+    ]);
 
     return (
         <div className={'form'}>
-            <h3>Fill your data</h3>
+            <h3>Maydonlarni to'ldiring</h3>
             <input
                 className={"input"}
                 type="text"
-                placeholder={'Region'}
-                value={country}
-                onChange={onChangeCountry}
+                placeholder={'FIO'}
+                value={fullName}
+                id='fullName'
+                onChange={onChange}
+            />
+            <input
+                className={"input"}
+                type="date"
+                placeholder={'Tugulgan kun'}
+                value={dataOfBirthday}
+                id='dataOfBirthday'
+                onChange={onChange}
             />
             <input
                 className={"input"}
                 type="text"
-                placeholder={'street'}
-                value={street}
-                onChange={onChangeStreet}
+                placeholder={'Mutaxasislik'}
+                value={specialty}
+                id='specialty'
+                onChange={onchange}
             />
-            <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option value={'physical'}>Physical face</option>
-                <option value={'legal'}>Legal face</option>
+            <input
+                className={"input"}
+                type="text"
+                placeholder={'Ish joyi'}
+                value={workPlace}
+                id='workPlace'
+                onChange={onchange}
+            />
+            <input
+                className={"input"}
+                type="number"
+                placeholder={'+998...'}
+                value={phoneNumber}
+                id='phoneNumber'
+                onChange={onChange}
+            />
+            <select value={subject} onChange={(e) => setSubject(e.target.value)} className={'select'}>
+                <option value='false'>Menejer yo'q</option>
+                <option value='true'>Meneger bor</option>
             </select>
+            {subject === 'true' ?
+                <input
+                    className={"input"}
+                    type="text"
+                    placeholder={'Meneger FIO'}
+                    value={managerName}
+                    onChange={onChange}
+                />
+                : null}
         </div>
     );
 };
