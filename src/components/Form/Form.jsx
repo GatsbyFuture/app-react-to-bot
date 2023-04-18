@@ -4,6 +4,28 @@ import "./Form.css";
 
 const Form = () => {
 
+    const options = [
+        {
+            id: "49",
+            name: "Багдиярова Гульбану"
+        },
+        {
+            id: "50",
+            name: "Бекназарова Дилноза"
+        },
+        {
+            id: "51",
+            name: "Салиева Гулхан"
+        },
+        {
+            id: "52",
+            name: "Назокат"
+        },
+        {
+            id: "69",
+            name: "Асылбекова Айнура"
+        },
+    ];
     const [subject, setSubject] = useState('false');
     const { tg } = useTelegram();
     const [data, setData] = useState({
@@ -75,6 +97,7 @@ const Form = () => {
         workPlace,
         phoneNumber
     ]);
+    console.log(data);
 
     return (
         <div className={'form'}>
@@ -124,16 +147,20 @@ const Form = () => {
                 <option value='true'>Meneger bor</option>
             </select>
             {subject === 'true' ?
-                <input
-                    className={"input"}
-                    type="text"
-                    placeholder={'Meneger FIO'}
-                    value={managerName}
-                    id='managerName'
-                    onChange={onChange}
-                />
+                // <input
+                //     className={"input"}
+                //     type="text"
+                //     placeholder={'Meneger FIO'}
+                //     value={managerName}
+                //     id='managerName'
+                //     onChange={onChange}
+                // />
+                <select value={managerName} onChange={onChange} id="managerName" className={'select'}>
+                    <option value='default' disable='true' hidden >Managerni tanlang</option>
+                    {options.map(option => <option value={option.id} key={option.id}>{option.name}</option>)}
+                </select>
                 : null}
-        </div>
+        </div >
     );
 };
 
