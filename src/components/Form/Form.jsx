@@ -110,14 +110,17 @@ const Form = () => {
                 id='fullName'
                 onChange={onChange}
             />
-            <input
-                className={"input"}
-                type="date"
-                placeholder={'Tugulgan kun'}
-                value={dataOfBirthday}
-                id='dataOfBirthday'
-                onChange={onChange}
-            />
+            <div className="date-input">
+                <label htmlFor="dataOfBirthday">Tug'ulgan yilingizni kiriting</label>
+                <input
+                    className={"input"}
+                    type="date"
+                    placeholder='Tugulgan kun'
+                    value={dataOfBirthday}
+                    id='dataOfBirthday'
+                    onChange={onChange}
+                />
+            </div>
             <input
                 className={"input"}
                 type="text"
