@@ -26,7 +26,7 @@ h3 {
 }
 
 .date-input>label {
-    width: 75%;
+    width: 65%;
     background-color: white;
     color: gray;
     font-size: 14px;
@@ -37,5 +37,5 @@ h3 {
 }
 
 .date-input>input {
-    width: 25%;
+    width: 35%;
 }
