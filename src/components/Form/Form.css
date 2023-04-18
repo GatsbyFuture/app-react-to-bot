@@ -29,7 +29,9 @@ h3 {
     width: 85%;
     background-color: white;
     color: gray;
-    border: 1px solid black;
+    font-size: 14px;
+    border: 1px solid gray;
+    border-radius: 3px;
     padding: 10px;
     margin-top: 15px;
 }
