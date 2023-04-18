@@ -111,7 +111,7 @@ const Form = () => {
                 onChange={onChange}
             />
             <div className="date-input">
-                <label htmlFor="dataOfBirthday">Tug'ulgan yilingizni kiriting</label>
+                <label htmlFor="dataOfBirthday">Tug'ulgan kun sanasini kiriting</label>
                 <input
                     className={"input"}
                     type="date"

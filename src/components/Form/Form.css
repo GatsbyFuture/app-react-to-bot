@@ -27,7 +27,8 @@ h3 {
 
 .date-input>label {
     width: 85%;
-    color: blue;
+    background-color: white;
+    color: gray;
     border: 1px solid black;
     padding: 10px;
     margin-top: 15px;
