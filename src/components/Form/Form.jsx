@@ -113,7 +113,6 @@ const Form = () => {
             <div className="date-input">
                 <label htmlFor="dataOfBirthday">Tug'ulgan yilingizni kiriting</label>
                 <input
-                    hidden
                     className={"input"}
                     type="date"
                     placeholder='Tugulgan kun'
